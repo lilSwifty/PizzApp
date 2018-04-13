@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052BCDC4A01DDA7DDAA5CDC6 /* Pods_PizzApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078200B737BF6C6896367530 /* Pods_PizzApp.framework */; };
 		5301DBF32080881800ADD90F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DBF22080881800ADD90F /* AppDelegate.swift */; };
 		5301DBF52080881800ADD90F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DBF42080881800ADD90F /* ViewController.swift */; };
 		5301DBF82080881800ADD90F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5301DBF62080881800ADD90F /* Main.storyboard */; };
 		5301DBFB2080881800ADD90F /* PizzApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5301DBF92080881800ADD90F /* PizzApp.xcdatamodeld */; };
 		5301DBFD2080881800ADD90F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5301DBFC2080881800ADD90F /* Assets.xcassets */; };
 		5301DC002080881800ADD90F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5301DBFE2080881800ADD90F /* LaunchScreen.storyboard */; };
+		5301DC102080963000ADD90F /* PizzaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC0F2080963000ADD90F /* PizzaViewController.swift */; };
+		5301DC12208097E000ADD90F /* CustomPizzaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC11208097E000ADD90F /* CustomPizzaCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		078200B737BF6C6896367530 /* Pods_PizzApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		169ED325DBDFEB3413A70BF5 /* Pods-PizzApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PizzApp/Pods-PizzApp.release.xcconfig"; sourceTree = "<group>"; };
 		5301DBEF2080881800ADD90F /* PizzApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5301DBF22080881800ADD90F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5301DBF42080881800ADD90F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		5301DBFC2080881800ADD90F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5301DBFF2080881800ADD90F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5301DC012080881800ADD90F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5301DC0F2080963000ADD90F /* PizzaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaViewController.swift; sourceTree = "<group>"; };
+		5301DC11208097E000ADD90F /* CustomPizzaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPizzaCell.swift; sourceTree = "<group>"; };
+		DAE700847EBD72CB2A026375 /* Pods-PizzApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzApp/Pods-PizzApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052BCDC4A01DDA7DDAA5CDC6 /* Pods_PizzApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,8 @@
 			children = (
 				5301DBF12080881800ADD90F /* PizzApp */,
 				5301DBF02080881800ADD90F /* Products */,
+				B02CF48858B059DAA531F659 /* Pods */,
+				A2DC04834F78E1268B9506B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +70,31 @@
 				5301DBF22080881800ADD90F /* AppDelegate.swift */,
 				5301DBF42080881800ADD90F /* ViewController.swift */,
 				5301DBF62080881800ADD90F /* Main.storyboard */,
+				5301DC11208097E000ADD90F /* CustomPizzaCell.swift */,
+				5301DC0F2080963000ADD90F /* PizzaViewController.swift */,
 				5301DBFC2080881800ADD90F /* Assets.xcassets */,
 				5301DBFE2080881800ADD90F /* LaunchScreen.storyboard */,
 				5301DC012080881800ADD90F /* Info.plist */,
 				5301DBF92080881800ADD90F /* PizzApp.xcdatamodeld */,
 			);
 			path = PizzApp;
+			sourceTree = "<group>";
+		};
+		A2DC04834F78E1268B9506B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				078200B737BF6C6896367530 /* Pods_PizzApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B02CF48858B059DAA531F659 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DAE700847EBD72CB2A026375 /* Pods-PizzApp.debug.xcconfig */,
+				169ED325DBDFEB3413A70BF5 /* Pods-PizzApp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5301DC042080881800ADD90F /* Build configuration list for PBXNativeTarget "PizzApp" */;
 			buildPhases = (
+				4E5A2FA15698393AF39C38E5 /* [CP] Check Pods Manifest.lock */,
 				5301DBEB2080881800ADD90F /* Sources */,
 				5301DBEC2080881800ADD90F /* Frameworks */,
 				5301DBED2080881800ADD90F /* Resources */,
+				FB5D76D715FBB9CD78D7178A /* [CP] Embed Pods Frameworks */,
+				022FD3E1E41098EFD2B01288 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,13 +167,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		022FD3E1E41098EFD2B01288 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PizzApp/Pods-PizzApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E5A2FA15698393AF39C38E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PizzApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB5D76D715FBB9CD78D7178A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PizzApp/Pods-PizzApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PizzApp/Pods-PizzApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5301DBEB2080881800ADD90F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5301DBF52080881800ADD90F /* ViewController.swift in Sources */,
+				5301DC102080963000ADD90F /* PizzaViewController.swift in Sources */,
 				5301DBF32080881800ADD90F /* AppDelegate.swift in Sources */,
+				5301DC12208097E000ADD90F /* CustomPizzaCell.swift in Sources */,
 				5301DBFB2080881800ADD90F /* PizzApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +371,7 @@
 		};
 		5301DC052080881800ADD90F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAE700847EBD72CB2A026375 /* Pods-PizzApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +387,7 @@
 		};
 		5301DC062080881800ADD90F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 169ED325DBDFEB3413A70BF5 /* Pods-PizzApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

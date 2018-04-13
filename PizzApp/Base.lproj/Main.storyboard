@@ -120,7 +120,7 @@
                                                                 <constraint firstAttribute="height" constant="58" id="CY0-RB-BbT"/>
                                                                 <constraint firstAttribute="width" constant="51" id="z21-dp-OlD"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -131,7 +131,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                             <state key="normal" title="+">
-                                                                <color key="titleColor" red="0.1203250528" green="1" blue="0.093278808000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="titleColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="addPizza:" destination="J8c-eN-4GF" eventType="touchUpInside" id="2k5-Rp-mIa"/>
@@ -193,10 +193,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addLabel" destination="BEc-lW-2xK" id="Opv-Hh-Jn6"/>
+                                            <outlet property="amountLabel" destination="HvJ-8F-IdN" id="Ffn-ET-HaR"/>
                                             <outlet property="amountOfPizza" destination="HvJ-8F-IdN" id="3ec-Kf-avw"/>
                                             <outlet property="cellView" destination="ZIG-4W-kdq" id="4JY-Tt-W4O"/>
                                             <outlet property="pizzaLabel" destination="uj6-9g-hnS" id="LVb-od-xba"/>
                                             <outlet property="priceLabel" destination="NT9-Vi-elK" id="Xnr-Oi-h4H"/>
+                                            <outlet property="removeLabel" destination="i1n-Br-Abp" id="WfH-Ms-ocP"/>
                                             <outlet property="toppingLabel" destination="OnU-YL-if8" id="puY-FW-c6s"/>
                                         </connections>
                                     </tableViewCell>

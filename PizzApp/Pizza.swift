@@ -12,11 +12,13 @@ class Pizza {
     var name : String
     var topping : Array<String>
     var price : Double
+    var amount : Int
     
-    init(name: String, topping: Array<String>, price: Double) {
+    init(name: String, topping: Array<String>, price: Double, amount: Int) {
         self.name = name
         self.topping = topping
         self.price = price
+        self.amount = amount
     }
     
     

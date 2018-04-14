@@ -32,10 +32,6 @@ class CustomPizzaCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.removeLabel.alpha = 0.0
-        self.amountLabel.alpha = 0.0
-        
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,15 +42,9 @@ class CustomPizzaCell: UITableViewCell {
     
     @IBAction func addPizza(_ sender: UIButton) {
         delegate?.didPressAdd()
-        removeLabel.alpha = 1.0
-        amountLabel.alpha = 1.0
     }
     
     @IBAction func removePizza(_ sender: UIButton) {
-        if self.amountLabel.text == String(0){
-            self.removeLabel.alpha = 0.0
-            self.amountLabel.alpha = 0.0
-        }
         delegate?.didPressRemove()
     }
     

@@ -18,6 +18,8 @@
 		5301DC12208097E000ADD90F /* CustomPizzaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC11208097E000ADD90F /* CustomPizzaCell.swift */; };
 		5301DC162080CC1600ADD90F /* Pizza.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC152080CC1600ADD90F /* Pizza.swift */; };
 		5301DC182080F33300ADD90F /* modelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC172080F33300ADD90F /* modelDB.swift */; };
+		5301DC1A20839BB700ADD90F /* PizzaPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC1920839BB700ADD90F /* PizzaPreviewViewController.swift */; };
+		5301DC1E2084C3AF00ADD90F /* ToppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		5301DC11208097E000ADD90F /* CustomPizzaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPizzaCell.swift; sourceTree = "<group>"; };
 		5301DC152080CC1600ADD90F /* Pizza.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizza.swift; sourceTree = "<group>"; };
 		5301DC172080F33300ADD90F /* modelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modelDB.swift; sourceTree = "<group>"; };
+		5301DC1920839BB700ADD90F /* PizzaPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaPreviewViewController.swift; sourceTree = "<group>"; };
+		5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToppingTableViewCell.swift; sourceTree = "<group>"; };
 		DAE700847EBD72CB2A026375 /* Pods-PizzApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzApp/Pods-PizzApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,12 +80,14 @@
 				5301DBF62080881800ADD90F /* Main.storyboard */,
 				5301DC11208097E000ADD90F /* CustomPizzaCell.swift */,
 				5301DC0F2080963000ADD90F /* PizzaViewController.swift */,
+				5301DC1920839BB700ADD90F /* PizzaPreviewViewController.swift */,
 				5301DBFC2080881800ADD90F /* Assets.xcassets */,
 				5301DBFE2080881800ADD90F /* LaunchScreen.storyboard */,
 				5301DC012080881800ADD90F /* Info.plist */,
 				5301DBF92080881800ADD90F /* PizzApp.xcdatamodeld */,
 				5301DC152080CC1600ADD90F /* Pizza.swift */,
 				5301DC172080F33300ADD90F /* modelDB.swift */,
+				5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */,
 			);
 			path = PizzApp;
 			sourceTree = "<group>";
@@ -242,9 +248,11 @@
 				5301DC102080963000ADD90F /* PizzaViewController.swift in Sources */,
 				5301DC162080CC1600ADD90F /* Pizza.swift in Sources */,
 				5301DBF32080881800ADD90F /* AppDelegate.swift in Sources */,
+				5301DC1A20839BB700ADD90F /* PizzaPreviewViewController.swift in Sources */,
 				5301DC182080F33300ADD90F /* modelDB.swift in Sources */,
 				5301DC12208097E000ADD90F /* CustomPizzaCell.swift in Sources */,
 				5301DBFB2080881800ADD90F /* PizzApp.xcdatamodeld in Sources */,
+				5301DC1E2084C3AF00ADD90F /* ToppingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

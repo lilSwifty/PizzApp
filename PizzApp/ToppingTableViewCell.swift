@@ -1,24 +1,18 @@
 //
-//  CustomPizzaCell.swift
+//  ToppingTableViewCell.swift
 //  PizzApp
 //
-//  Created by Mani Sedighi on 2018-04-13.
+//  Created by Mani Sedighi on 2018-04-16.
 //  Copyright © 2018 Mani Sedighi. All rights reserved.
 //
 
 import UIKit
 
+class ToppingTableViewCell: UITableViewCell {
 
-class CustomPizzaCell: UITableViewCell {
-
-    @IBOutlet weak var pizzaLabel: UILabel!
-    @IBOutlet weak var toppingLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var cellView: UIView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,5 +21,4 @@ class CustomPizzaCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
 }

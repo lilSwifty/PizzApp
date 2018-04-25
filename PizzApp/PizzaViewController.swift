@@ -17,6 +17,7 @@ class PizzaViewController: UIViewController {
     var listOfAllPizzas = [Pizza]()
     var listOfAllPanPizzas = [Pizza]()
     var listOfAllSpecialPizzas = [Pizza]()
+    var pizzaList = [Pizza]()
     
     var expandCell = false
     
@@ -24,7 +25,9 @@ class PizzaViewController: UIViewController {
     
     let imageview = UIImageView(image: #imageLiteral(resourceName: "oldPaper"))
     
-    
+    let sectionNormalPizza = 0
+    let sectionPanPizza = 1
+    let sectionSpecialPizza = 2
     
     @IBOutlet weak var tableview: UITableView!
     
@@ -38,7 +41,7 @@ class PizzaViewController: UIViewController {
         tableview.dataSource = self
         
         updatePizzaInformation()
-        print("antal \(listOfAllPizzas.count)")
+        print("antal \(pizzaList.count)")
         tableview.backgroundView = imageview
         
 
@@ -116,7 +119,7 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("You chose: \(listOfAllPizzas[indexPath.row].name)")
+        print("You chose: \(pizzaList[indexPath.row].name)")
         performSegue(withIdentifier: "showPizza", sender: self)
         
     }
@@ -124,8 +127,10 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
             if let destinationVC = segue.destination as? PizzaPreviewViewController{
-                destinationVC.pizzaToOrder = listOfAllPizzas[(tableview.indexPathForSelectedRow?.row)!]
-            }
+
+                    destinationVC.pizzaToOrder = pizzaList[(tableview.indexPathForSelectedRow?.row)!]
+
+            }            
             
         }
     
@@ -153,115 +158,177 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
 extension PizzaViewController {
     func updatePizzaInformation(){
         
-        var listOfAllToppings : [String : Double] = ["Skinka" : 1.2, "Ost" : 1.0]
+        var listOfAllToppings : [String : Double] = ["Champnjoner" : 1.1,
+                                                     "Ananas" : 1.1,
+                                                     "Paprika" : 1.1,
+                                                     "Lök" : 1.1,
+                                                     "Syltlök" : 1.1,
+                                                     "Oliver" : 1.1,
+                                                     "Majs" : 1.1,
+                                                     "Saltgurka" : 1.1,
+                                                     "Jalapeno" : 1.1,
+                                                     "Chilisås" : 1.1,
+                                                     "Vitlök" : 1.1,
+                                                     "Skinka" : 1.3,
+                                                     "Bacon" : 1.3,
+                                                     "Salami" : 1.3,
+                                                     "Maletköttsås" : 1.3,
+                                                     "Ägg" : 1.3,
+                                                     "Anjovis" : 1.3,
+                                                     "Ost" : 1.3,
+                                                     "Fetaost" : 1.3,
+                                                     "Auraost" : 1.3,
+                                                     "Färsk tomat" : 1.3,
+                                                     "Banan" : 1.3,
+                                                     "Kebabkött" : 1.6,
+                                                     "Bearneisesås" : 1.6,
+                                                     "Soltorkade tomater" : 1.6,
+                                                     "Tonfisk" : 1.6,
+                                                     "Räkor" : 1.6,
+                                                     "Musslor" : 1.6,
+                                                     "Oxinrefilé" : 4.1]
         
         
         // All regular pizzas :
         let mexicana = Pizza(name: "Mexicana", topping: ["Maletköttsås", "Paprika", "Majs"], price: 11.30)
         listOfAllPizzas.append(mexicana)
+        pizzaList.append(mexicana)
         
         let capricciosa = Pizza(name: "Capricciosa", topping: ["Skinka", "Champinjoner"], price: 11.70)
         listOfAllPizzas.append(capricciosa)
+        pizzaList.append(capricciosa)
         
         let fruttiDiMare = Pizza(name: "Frutti Di Mare", topping: ["Musslor", "Räkor"], price: 10.90)
         listOfAllPizzas.append(fruttiDiMare)
+        pizzaList.append(fruttiDiMare)
         
         let operaSpecial = Pizza(name: "Opera Special", topping: ["Skinka" , "Tonfisk" , "Salami"], price: 11.70)
         listOfAllPizzas.append(operaSpecial)
+        pizzaList.append(operaSpecial)
         
         let osoleMio = Pizza(name: "O'Sole Mio", topping: ["Tonfisk", "Räkor"], price: 10.90)
         listOfAllPizzas.append(osoleMio)
+        pizzaList.append(osoleMio)
         
         let bussola = Pizza(name: "Bussola", topping: ["Skinka", "Räkor"], price: 10.90)
         listOfAllPizzas.append(bussola)
+        pizzaList.append(bussola)
         
         let opera = Pizza(name: "Opera", topping: ["Skinka", "Tonfisk"], price: 10.90)
         listOfAllPizzas.append(opera)
+        pizzaList.append(opera)
         
         let siciliana = Pizza(name: "Siciliana", topping: ["Anjovis", "Oliver", "Vitlök"], price: 11.30)
         listOfAllPizzas.append(siciliana)
+        pizzaList.append(siciliana)
         
         let calzone = Pizza(name: "Calzone", topping: ["Skinka", "inbakad"], price: 11.90)
         listOfAllPizzas.append(calzone)
+        pizzaList.append(calzone)
         
         let vegetariana = Pizza(name: "Vegetariana", topping: ["Champinjoner", "Lök", "Paprika", "Oliver", "Ananas"], price: 12.30)
         listOfAllPizzas.append(vegetariana)
+        pizzaList.append(vegetariana)
         
         let americana = Pizza(name: "Americana", topping: ["Skinka", "Ananas", "Auraost"], price: 11.50)
         listOfAllPizzas.append(americana)
+        pizzaList.append(americana)
         
         let vesuvio = Pizza(name: "Vesuvio", topping: ["Skinka"], price: 9.50)
         listOfAllPizzas.append(vesuvio)
+        pizzaList.append(vesuvio)
         
         let quattro = Pizza(name: "Quattro Stagioni", topping: ["Skinka", "Champinjoner", "Räkor", "Musslor" ], price: 12.10)
         listOfAllPizzas.append(quattro)
+        pizzaList.append(quattro)
         
         let cacciatora = Pizza(name: "Cacciatora", topping: ["Salami", "Oliver"], price: 10.70)
         listOfAllPizzas.append(cacciatora)
+        pizzaList.append(cacciatora)
         
         // All pan pizzas :
         
         let peterpan = Pizza(name: "Peter Pan", topping: ["Skinka", "Champinjoner", "Ananas"], price: 10.90)
-        listOfAllPizzas.append(peterpan)
+        listOfAllPanPizzas.append(peterpan)
+        pizzaList.append(peterpan)
         
         let streetman = Pizza(name: "Streetman", topping: ["Maletköttsås", "Salami", "Lök","Paprika"], price: 11.70)
-        listOfAllPizzas.append(streetman)
+        listOfAllPanPizzas.append(streetman)
+        pizzaList.append(streetman)
         
         let texaspan = Pizza(name: "Texas Pan", topping: ["Bacon", "Syltlök", "Auraost"], price: 11.10)
-        listOfAllPizzas.append(texaspan)
+        listOfAllPanPizzas.append(texaspan)
+        pizzaList.append(texaspan)
         
         let fruitland = Pizza(name: "Fruitland", topping: ["Champinjoner", "Ananas","Lök", "Oliver"], price: 11.30)
-        listOfAllPizzas.append(fruitland)
+        listOfAllPanPizzas.append(fruitland)
+        pizzaList.append(fruitland)
         
         let trinity = Pizza(name: "Trinity River", topping: ["Tonfisk", "Räkor", "Lök"], price: 11.10)
-        listOfAllPizzas.append(trinity)
+        listOfAllPanPizzas.append(trinity)
+        pizzaList.append(trinity)
         
         let regency = Pizza(name: "Regency", topping: ["Skinka", "Ananas", "Auraost"], price: 11.10)
-        listOfAllPizzas.append(regency)
+        listOfAllPanPizzas.append(regency)
+        pizzaList.append(regency)
         
         let dalhart = Pizza(name: "Dalhart", topping: ["Salami", "Lök", "Paprika", "Saltgurka", "Auraost"], price: 12.30)
-        listOfAllPizzas.append(dalhart)
+        listOfAllPanPizzas.append(dalhart)
+        pizzaList.append(dalhart)
         
         // All special pizzas :
         
         let sophia = Pizza(name: "Sophia Loren", topping: ["Bacon", "Ananas", "Ägg"], price: 11.50)
-        listOfAllPizzas.append(sophia)
+        listOfAllSpecialPizzas.append(sophia)
+        pizzaList.append(sophia)
         
         let pompeij = Pizza(name: "Pompeij", topping: ["Bacon", "Lök"], price: 10.70)
-        listOfAllPizzas.append(pompeij)
+        listOfAllSpecialPizzas.append(pompeij)
+        pizzaList.append(pompeij)
         
         let pekkas = Pizza(name: "Pekkas Special", topping: ["Skinka","Champinjoner", "Räkor", "Ananas", "Auraost" ], price: 12.90)
-        listOfAllPizzas.append(pekkas)
+        listOfAllSpecialPizzas.append(pekkas)
+        pizzaList.append(pekkas)
         
         let calzoneD = Pizza(name: "Calzone a'la Dallas", topping: ["Skinka", "Lök", "Champinjoner", "Auraost", "inbakad"], price: 13.50)
-        listOfAllPizzas.append(calzoneD)
+        listOfAllSpecialPizzas.append(calzoneD)
+        pizzaList.append(calzoneD)
         
         let vegeDallas = Pizza(name: "Vegetariana a'la Dallas", topping: ["Champinjoner", "Lök", "Paprika", "Oliver", "Ananas", "Auraost"], price: 13.10)
-        listOfAllPizzas.append(vegeDallas)
+        listOfAllSpecialPizzas.append(vegeDallas)
+        pizzaList.append(vegeDallas)
         
         let balaton = Pizza(name: "Balaton", topping: ["Salami", "Saltgurka", "Lök", "Auraost"], price: 12.10)
-        listOfAllPizzas.append(balaton)
+        listOfAllSpecialPizzas.append(balaton)
+        pizzaList.append(balaton)
         
         let westerwik = Pizza(name: "Pizza Westerwik", topping: ["Maletköttsås", "Saltgurka", "Champinjoner", "Lök"], price: 11.90)
-        listOfAllPizzas.append(westerwik)
+        listOfAllSpecialPizzas.append(westerwik)
+        pizzaList.append(westerwik)
         
         let diablo = Pizza(name: "Diablo (stark)", topping: ["Chilisås", "Pepperonisalami", "Ananas", "Lök", "Jalapeno"], price: 12.50)
-        listOfAllPizzas.append(diablo)
+        listOfAllSpecialPizzas.append(diablo)
+        pizzaList.append(diablo)
         
         let dallas = Pizza(name: "Dallas", topping: ["Oxinnerfilé 2 x 50 g", "Majs", "Lök", "Ägg"], price: 18.50)
-        listOfAllPizzas.append(dallas)
+        listOfAllSpecialPizzas.append(dallas)
+        pizzaList.append(dallas)
         
         let dallasSpecial = Pizza(name: "Dallas Special", topping: ["Oxinnerfilé 2 x 50 g", "Majs", "Lök", "Auraost"], price: 19.10)
-        listOfAllPizzas.append(dallasSpecial)
+        listOfAllSpecialPizzas.append(dallasSpecial)
+        pizzaList.append(dallasSpecial)
         
         let bobafett = Pizza(name: "Boba Fett", topping: ["Strimlad oxinnerfilé 50g", "Fetaost", "Skivad tomat"], price: 15.70)
-        listOfAllPizzas.append(bobafett)
+        listOfAllSpecialPizzas.append(bobafett)
+        pizzaList.append(bobafett)
         
         let banana = Pizza(name: "Banana", topping: ["Skinka", "Banan", "Curry"], price: 11.50)
-        listOfAllPizzas.append(banana)
+        listOfAllSpecialPizzas.append(banana)
+        pizzaList.append(banana)
         
         let sweden = Pizza(name: "Dr. Sweden", topping: ["Kebab", "Soltorkade tomater", "Bearneisesås"], price: 12.60)
-        listOfAllPizzas.append(sweden)
+        listOfAllSpecialPizzas.append(sweden)
+        pizzaList.append(sweden)
         
         
         

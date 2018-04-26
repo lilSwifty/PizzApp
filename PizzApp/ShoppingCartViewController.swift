@@ -24,9 +24,12 @@ class ShoppingCartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableview.reloadData()
+        
         print("\(price)0€")
         print("shoppingList: \(shoppingList)")
         priceLabel.text = "Your total is \(price)0€"
+        
 
         title = "Your order"
         // Do any additional setup after loading the view.
@@ -41,17 +44,17 @@ class ShoppingCartViewController: UIViewController {
         let context = LAContext()
         var error: NSError?
         
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Identify yourself!"
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            let reason = "Confirm order!"
             
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {
                 [unowned self] success, authenticationError in
                 
                 DispatchQueue.main.async {
                     if success {
                         print("authentication succes! Drip drop!")
                     } else {
-                        let ac = UIAlertController(title: "Authentication failed", message: "Sorry!", preferredStyle: .alert)
+                        let ac = UIAlertController(title: "Authentication failed", message: "Try again to place your order", preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "OK", style: .default))
                         self.present(ac, animated: true)
                     }

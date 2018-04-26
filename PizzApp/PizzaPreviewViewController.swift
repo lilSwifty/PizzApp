@@ -12,10 +12,14 @@ import UIKit
 
 class PizzaPreviewViewController: UIViewController{
 
+    let defaults = UserDefaults.standard
+    let key = "AddToList"
+    
     
     var pizzaToOrder:Pizza?
     
-    
+    var orderList : [String] = []
+    var price = Double()
     
     
     @IBOutlet weak var pizzaName: UILabel!
@@ -29,14 +33,34 @@ class PizzaPreviewViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         pizzaName.text = pizzaToOrder?.name
+        price = price + (pizzaToOrder?.price)!
         setToppings()
+        orderList = defaults.stringArray(forKey: key) ?? [String]()
+        price = defaults.double(forKey: "price")
+        print("View did load: \(orderList)")
     }
     
     
     
+    @IBAction func addToCart(_ sender: UIButton) {
+        orderList.append((pizzaToOrder?.name)!)
+        defaults.set(orderList, forKey: key)
+        defaults.set(price, forKey: "price")
+        print("Button pressed: \(orderList)")
+    }
     
+    
+    @IBAction func goToCart(_ sender: UIButton) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? ShoppingCartViewController {
+            destinationVC.shoppingList = orderList
+            destinationVC.price = price
+        }
+    }
     
     func setToppings(){
         
@@ -83,6 +107,8 @@ class PizzaPreviewViewController: UIViewController{
             topping6.text = pizzaToOrder?.topping[5]
         }
     }
+    
+
 
 
 }

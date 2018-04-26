@@ -17,7 +17,9 @@ class PizzaViewController: UIViewController {
     var listOfAllPizzas = [Pizza]()
     var listOfAllPanPizzas = [Pizza]()
     var listOfAllSpecialPizzas = [Pizza]()
-    var pizzaList = [Pizza]()
+    
+    var customer = ""
+    var table = ""
     
     var expandCell = false
     
@@ -41,7 +43,7 @@ class PizzaViewController: UIViewController {
         tableview.dataSource = self
         
         updatePizzaInformation()
-        print("antal \(pizzaList.count)")
+        print("antal \(listOfAllPizzas.count + listOfAllPanPizzas.count + listOfAllSpecialPizzas.count)")
         tableview.backgroundView = imageview
         
 
@@ -119,7 +121,6 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("You chose: \(pizzaList[indexPath.row].name)")
         performSegue(withIdentifier: "showPizza", sender: self)
         
     }
@@ -129,9 +130,15 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
             if let destinationVC = segue.destination as? PizzaPreviewViewController{
 
                 switch tableview.indexPathForSelectedRow?.section {
-                case 0: destinationVC.pizzaToOrder = listOfAllPizzas[(tableview.indexPathForSelectedRow?.row)!]
-                case 1: destinationVC.pizzaToOrder = listOfAllPanPizzas[(tableview.indexPathForSelectedRow?.row)!]
-                case 2: destinationVC.pizzaToOrder = listOfAllSpecialPizzas[(tableview.indexPathForSelectedRow?.row)!]
+                case 0:
+                    destinationVC.pizzaToOrder = listOfAllPizzas[(tableview.indexPathForSelectedRow?.row)!]
+                    print("You chose: \(listOfAllPizzas[(tableview.indexPathForSelectedRow?.row)!].name)")
+                case 1:
+                    destinationVC.pizzaToOrder = listOfAllPanPizzas[(tableview.indexPathForSelectedRow?.row)!]
+                    print("You chose: \(listOfAllPanPizzas[(tableview.indexPathForSelectedRow?.row)!].name)")
+                case 2:
+                    destinationVC.pizzaToOrder = listOfAllSpecialPizzas[(tableview.indexPathForSelectedRow?.row)!]
+                    print("You chose: \(listOfAllSpecialPizzas[(tableview.indexPathForSelectedRow?.row)!].name)")
                 default : break
                 }
 

@@ -14,6 +14,8 @@ protocol SendPizzaData {
 
 class PizzaViewController: UIViewController {
     
+    
+    var listOfOrder : [String] = []
     var listOfAllPizzas = [Pizza]()
     var listOfAllPanPizzas = [Pizza]()
     var listOfAllSpecialPizzas = [Pizza]()
@@ -46,9 +48,11 @@ class PizzaViewController: UIViewController {
         print("antal \(listOfAllPizzas.count + listOfAllPanPizzas.count + listOfAllSpecialPizzas.count)")
         tableview.backgroundView = imageview
         
-
+        
         // Do any additional setup after loading the view.
     }
+    
+
     
     override func viewDidAppear(_ animated: Bool) {
         let selectedRow: IndexPath? = tableview.indexPathForSelectedRow
@@ -56,6 +60,7 @@ class PizzaViewController: UIViewController {
             tableview.deselectRow(at: selectedRowNotNill, animated: false)
         }
     }
+    
     
 }
 

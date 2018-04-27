@@ -22,6 +22,7 @@
 		5301DC1E2084C3AF00ADD90F /* ToppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */; };
 		535566BD2091BA0100A59AF3 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535566BC2091BA0100A59AF3 /* ShoppingCartViewController.swift */; };
 		535566BF2091DF1500A59AF3 /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535566BE2091DF1500A59AF3 /* ShoppingListTableViewCell.swift */; };
+		53FE3F4F20921A9B001492A3 /* note7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53FE3F4E20921A9A001492A3 /* note7.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToppingTableViewCell.swift; sourceTree = "<group>"; };
 		535566BC2091BA0100A59AF3 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		535566BE2091DF1500A59AF3 /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		53FE3F4E20921A9A001492A3 /* note7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = note7.wav; sourceTree = "<group>"; };
 		DAE700847EBD72CB2A026375 /* Pods-PizzApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PizzApp/Pods-PizzApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				5301DC152080CC1600ADD90F /* Pizza.swift */,
 				5301DC172080F33300ADD90F /* modelDB.swift */,
 				5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */,
+				53FE3F4E20921A9A001492A3 /* note7.wav */,
 			);
 			path = PizzApp;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			files = (
 				5301DC002080881800ADD90F /* LaunchScreen.storyboard in Resources */,
 				5301DBFD2080881800ADD90F /* Assets.xcassets in Resources */,
+				53FE3F4F20921A9B001492A3 /* note7.wav in Resources */,
 				5301DBF82080881800ADD90F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +413,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.manisedighi.PizzApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -425,7 +429,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.manisedighi.PizzApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

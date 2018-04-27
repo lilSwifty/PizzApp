@@ -228,7 +228,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.30629280821917809" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tbN-Ta-VyM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pizza" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbN-Ta-VyM">
                                 <rect key="frame" x="20" y="121" width="344" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Courier-Oblique" family="Courier" pointSize="56"/>
@@ -240,7 +240,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="shoppingCart"/>
                                 <connections>
-                                    <action selector="goToCart:" destination="zcd-hl-0Sv" eventType="touchUpInside" id="nia-Vr-mm7"/>
                                     <segue destination="fSf-IP-bip" kind="show" identifier="goToCart" id="KQv-E7-W6P"/>
                                 </connections>
                             </button>
@@ -325,6 +324,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fSf-IP-bip" id="1wh-5M-fEu"/>
+                                    <outlet property="delegate" destination="fSf-IP-bip" id="vVb-eS-a6y"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QwQ-4e-CsH">
                                 <rect key="frame" x="0.0" y="64" width="414" height="113"/>

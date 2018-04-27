@@ -8,11 +8,13 @@
 
 import UIKit
 import LocalAuthentication
+import AudioToolbox
 
-class ShoppingCartViewController: UIViewController {
-
-    var shoppingList : [String] = []
-    var price = Double()
+class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var recievedOrder : [Pizza] = []
+    
+    //let defaults = Userdefaults.standard
     
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -26,11 +28,8 @@ class ShoppingCartViewController: UIViewController {
         super.viewDidLoad()
         tableview.reloadData()
         
-        print("\(price)0€")
-        print("shoppingList: \(shoppingList)")
-        priceLabel.text = "Your total is \(price)0€"
+        priceLabel.text = "pris: \(recievedOrder.map({pizza in pizza.price}).reduce(0, +))"
         
-
         title = "Your order"
         // Do any additional setup after loading the view.
     }
@@ -52,6 +51,7 @@ class ShoppingCartViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     if success {
+                        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                         print("authentication succes! Drip drop!")
                     } else {
                         let ac = UIAlertController(title: "Authentication failed", message: "Try again to place your order", preferredStyle: .alert)
@@ -67,18 +67,15 @@ class ShoppingCartViewController: UIViewController {
         }
     }
     
-}
-
-extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return recievedOrder.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "shoppingCell") as! ShoppingListTableViewCell
         
-        cell.pizzaLabel.text = shoppingList[indexPath.row]
+        cell.pizzaLabel.text = recievedOrder[indexPath.row].name
+        //cell.pizzaLabel.text = shoppingList[indexPath.row]
         
         return cell
     }
@@ -86,4 +83,16 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            
+            recievedOrder.remove(at: indexPath.row)
+            //defaults.set(recievedOrder, forKey: key)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
 }
+

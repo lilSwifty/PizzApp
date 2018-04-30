@@ -20,9 +20,6 @@ class PizzaViewController: UIViewController {
     var listOfAllPanPizzas = [Pizza]()
     var listOfAllSpecialPizzas = [Pizza]()
     
-    var customer = ""
-    var table = ""
-    
     var expandCell = false
     
     var pizzaToSend : Pizza?
@@ -112,6 +109,8 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 75.0
     }
+    
+    
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.red.withAlphaComponent(0.6)

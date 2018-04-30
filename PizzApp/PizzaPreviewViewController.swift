@@ -37,7 +37,13 @@ class PizzaPreviewViewController: UIViewController{
         pizzaName.text = "\(pizzaToOrder!.name)   \(pizzaToOrder!.price)0€"
         
         setToppings()
-        orderList = defaults.stringArray(forKey: key) ?? [String]()
+        if let data = defaults.object(forKey: key) as? Data {
+            if let pizzaList = try? PropertyListDecoder().decode([Pizza].self, from: data){
+                order = pizzaList
+            }
+        }
+        
+        
         
         print("View did load: \(orderList)")
     }
@@ -45,13 +51,8 @@ class PizzaPreviewViewController: UIViewController{
     
     
     @IBAction func addToCart(_ sender: UIButton) {
-//        orderList.append((pizzaToOrder?.name)!)
-//        totalPrice += (pizzaToOrder?.price)!
-//        defaults.set(orderList, forKey: key)
-//        defaults.set(totalPrice, forKey: "price")
-
         order.append(pizzaToOrder!)
-        //defaults.set(order, forKey: key)
+        try! defaults.set(PropertyListEncoder().encode(order), forKey: key)
         print("Button pressed: \(order)")
         
     }

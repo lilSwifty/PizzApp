@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import Firebase
 
-class Pizza {
+
+class Pizza : Codable {
     var name : String
     var topping : Array<String>
     var price : Double
@@ -19,5 +21,24 @@ class Pizza {
         self.price = price
     }
     
+    func saveToFirebase(pizza : [Pizza]){
+       
+        var listOfPizzas : [Pizza] = pizza
+        print(listOfPizzas)
+        let myDatabase = Database.database().reference().child("Pizza").child(Auth.auth().currentUser!.uid).childByAutoId()
+        let dictionary = ["pizza" : self.name, "price" : self.price] as [String : Any]
+        
+        for pizza in listOfPizzas{
+            myDatabase.setValue(dictionary)
+
+        }
+        
+        
+        
+        
+        
+//
+        
+    }
     
 }

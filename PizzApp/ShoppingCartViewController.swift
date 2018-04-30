@@ -14,7 +14,11 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     
     var recievedOrder : [Pizza] = []
     
-    //let defaults = Userdefaults.standard
+    let pizza : Pizza? = nil
+    
+    
+    let defaults = UserDefaults.standard
+    let key = "AddToList"
     
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -22,7 +26,10 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func placeOrder(_ sender: UIButton) {
         authenticateUser()
+        
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +59,11 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                 DispatchQueue.main.async {
                     if success {
                         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        for i in 0..<(self.recievedOrder.count){
+                            self.recievedOrder[i].saveToFirebase(pizza: [self.recievedOrder[i]])
+                        }
                         print("authentication succes! Drip drop!")
+                        
                     } else {
                         let ac = UIAlertController(title: "Authentication failed", message: "Try again to place your order", preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -75,7 +86,6 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableview.dequeueReusableCell(withIdentifier: "shoppingCell") as! ShoppingListTableViewCell
         
         cell.pizzaLabel.text = recievedOrder[indexPath.row].name
-        //cell.pizzaLabel.text = shoppingList[indexPath.row]
         
         return cell
     }
@@ -89,7 +99,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
             recievedOrder.remove(at: indexPath.row)
-            //defaults.set(recievedOrder, forKey: key)
+            try! defaults.set(PropertyListEncoder().encode(recievedOrder), forKey: key)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

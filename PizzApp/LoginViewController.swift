@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var message: UILabel!
     
+    var activityindicator : UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -29,48 +31,109 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: UIButton) {
-        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
-            print(user?.email)
+        
+        self.message.alpha = 0.0
+        startSpinning()
+        
+        print("before")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.stopSpinning()
+            
+            self.login()
         }
+        
     }
     
+    func login(){
+        
+        
+        
+        Auth.auth().signIn(withEmail: email.text!, password: password
+            .text!) { (user, error) in
+                if error != nil {
+                    self.message.text = "Unable to log in"
+                    self.message.alpha = 1.0
+                } else if user != nil {
+                    self.performSegue(withIdentifier: "userLogged", sender: self)
+                }
+        }
+        
+//        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+//            print("USER WHO WAS LOGGED IN: \(String(describing: user?.email))")
+//            if (error != nil){
+//               self.performSegue(withIdentifier: "userLogged", sender: self)
+//            } else {
+//                self.message.text = "User not found"
+//            }
+//        }
+    }
+    
+    func startSpinning(){
+        activityindicator.center = self.view.center
+        activityindicator.hidesWhenStopped = true
+        activityindicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        view.addSubview(activityindicator)
+        
+        activityindicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func stopSpinning(){
+        self.activityindicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
 
     
     @IBAction func register(_ sender: UIButton) {
         
+        self.message.alpha = 0.0
         
+        startSpinning()
         
-        UIView.animateKeyframes(withDuration: 3.0, delay: 3.0, animations: {self.message.alpha = 0.0})
-        
-        Auth.auth().createUser(withEmail: email.text!, password: password.text!){
-            (user, error) in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+           
+            //UIView.animateKeyframes(withDuration: 3.0, delay: 3.0, animations: {self.message.alpha = 0.0})
             
-            if error != nil{
+            Auth.auth().createUser(withEmail: self.email.text!, password: self.password.text!){
+                (user, error) in
                 
-                Auth.auth().fetchProviders(forEmail: self.email.text!, completion: {
-                    (providers, error) in
+                if error != nil{
                     
-                    if let error = error {
-                        print(error)
-                        self.message.text = "Failed to register"
-                        UIView.animateKeyframes(withDuration: 1.0, delay: 2.0, animations: {self.message.alpha = 1.0})
-                    } else if let providers = providers {
-                        self.message.text = "User already exists"
-                        UIView.animateKeyframes(withDuration: 1.0, delay: 2.0, animations: {self.message.alpha = 1.0})
-                        print(providers)
-                    }
-                })
-                
-                
-            } else {
-                print("Registration successfull!")
-                UIView.animateKeyframes(withDuration: 1.0, delay: 2.0, animations: {self.message.alpha = 1.0})
-                UIView.animateKeyframes(withDuration: 3.0, delay: 3.0, animations: {self.message.alpha = 0.0})
-                self.password.text = ""
+                    Auth.auth().fetchProviders(forEmail: self.email.text!, completion: {
+                        (providers, error) in
+                        
+                        if let error = error {
+                            self.stopSpinning()
+                            print(error)
+                            self.message.text = "Failed to register"
+                            UIView.animateKeyframes(withDuration: 1.0, delay: 0.5, animations: {self.message.alpha = 1.0})
+                        } else if let providers = providers {
+                            self.stopSpinning()
+                            self.message.text = "User already exists"
+                            UIView.animateKeyframes(withDuration: 1.0, delay: 0.5, animations: {self.message.alpha = 1.0})
+                            print(providers)
+                        }
+                    })
+                    
+                    
+                } else {
+                    self.stopSpinning()
+                    print("Registration successfull!")
+                    UIView.animateKeyframes(withDuration: 1.0, delay: 2.0, animations: {self.message.alpha = 1.0})
+                    UIView.animateKeyframes(withDuration: 3.0, delay: 3.0, animations: {self.message.alpha = 0.0})
+                    self.password.text = ""
+                }
             }
+            print("inside delay")
         }
         
+        
+        
+        
     }
+    
+    
 
 }
 

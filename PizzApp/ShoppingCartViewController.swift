@@ -20,6 +20,8 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     let defaults = UserDefaults.standard
     let key = "AddToList"
     
+    @IBOutlet weak var status: UILabel!
+    
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var tableview: UITableView!
@@ -35,7 +37,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         tableview.reloadData()
         
-        priceLabel.text = "pris: \(recievedOrder.map({pizza in pizza.price}).reduce(0, +))"
+        priceLabel.text = "pris: \(recievedOrder.map({pizza in pizza.price}).reduce(0, +))0€"
         
         title = "Your order"
         // Do any additional setup after loading the view.
@@ -44,6 +46,11 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func confirmOrder(){
+        self.status.text = "confirmed"
+        self.status.textColor = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
     }
     
     func authenticateUser() {
@@ -63,6 +70,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                             self.recievedOrder[i].saveToFirebase(pizza: [self.recievedOrder[i]])
                         }
                         print("authentication succes! Drip drop!")
+                        self.confirmOrder()
                         
                     } else {
                         let ac = UIAlertController(title: "Authentication failed", message: "Try again to place your order", preferredStyle: .alert)

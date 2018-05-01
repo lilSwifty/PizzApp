@@ -37,10 +37,10 @@ class LoginViewController: UIViewController {
         
         print("before")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.stopSpinning()
-            
             self.login()
+            
         }
         
     }
@@ -56,17 +56,12 @@ class LoginViewController: UIViewController {
                     self.message.alpha = 1.0
                 } else if user != nil {
                     self.performSegue(withIdentifier: "userLogged", sender: self)
+                    self.password.text = ""
+                    print(user)
                 }
         }
         
-//        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
-//            print("USER WHO WAS LOGGED IN: \(String(describing: user?.email))")
-//            if (error != nil){
-//               self.performSegue(withIdentifier: "userLogged", sender: self)
-//            } else {
-//                self.message.text = "User not found"
-//            }
-//        }
+
     }
     
     func startSpinning(){
@@ -93,7 +88,7 @@ class LoginViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
            
-            //UIView.animateKeyframes(withDuration: 3.0, delay: 3.0, animations: {self.message.alpha = 0.0})
+
             
             Auth.auth().createUser(withEmail: self.email.text!, password: self.password.text!){
                 (user, error) in

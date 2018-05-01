@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol SendPizzaData {
     func previewSelectedPizza(pizza : Pizza)
@@ -15,10 +16,14 @@ protocol SendPizzaData {
 class PizzaViewController: UIViewController {
     
     
-    var listOfOrder : [String] = []
+    let defaults = UserDefaults.standard
+    let key = "AddToList"
+    
     var listOfAllPizzas = [Pizza]()
     var listOfAllPanPizzas = [Pizza]()
     var listOfAllSpecialPizzas = [Pizza]()
+    
+    var recievedOrder : [Pizza] = []
     
     var expandCell = false
     
@@ -32,6 +37,15 @@ class PizzaViewController: UIViewController {
     
     @IBOutlet weak var tableview: UITableView!
     
+    @IBAction func logout(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
     
     
     
@@ -42,6 +56,7 @@ class PizzaViewController: UIViewController {
         tableview.dataSource = self
         
         updatePizzaInformation()
+        try! defaults.set(PropertyListEncoder().encode(recievedOrder), forKey: key)
         print("antal \(listOfAllPizzas.count + listOfAllPanPizzas.count + listOfAllSpecialPizzas.count)")
         tableview.backgroundView = imageview
         
@@ -52,12 +67,14 @@ class PizzaViewController: UIViewController {
 
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        // Detta fungerar inte riktigt, fråga Erik ?
+        // Cellen är grå när man kommer tillbaka
         let selectedRow: IndexPath? = tableview.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
             tableview.deselectRow(at: selectedRowNotNill, animated: false)
         }
     }
-    
     
 }
 
@@ -146,6 +163,8 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
                 default : break
                 }
 
+            } else if let destinationVC = segue.destination as? ShoppingCartViewController {
+                destinationVC.recievedOrder = recievedOrder
             }
             
         }

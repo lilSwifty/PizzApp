@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class PizzaPreviewViewController: UIViewController{
@@ -62,7 +63,9 @@ class PizzaPreviewViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? ShoppingCartViewController {
-
+            destinationVC.recievedOrder = order
+            
+        } else if let destinationVC = segue.destination as? PizzaViewController {
             destinationVC.recievedOrder = order
         }
     }

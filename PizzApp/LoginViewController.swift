@@ -52,12 +52,12 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email.text!, password: password
             .text!) { (user, error) in
                 if error != nil {
-                    self.message.text = "Unable to log in"
+                    self.message.text = "Inloggning misslyckades"
                     self.message.alpha = 1.0
                 } else if user != nil {
                     self.performSegue(withIdentifier: "userLogged", sender: self)
                     self.password.text = ""
-                    print(user)
+                    print(user!)
                 }
         }
         
@@ -101,11 +101,11 @@ class LoginViewController: UIViewController {
                         if let error = error {
                             self.stopSpinning()
                             print(error)
-                            self.message.text = "Failed to register"
+                            self.message.text = "Registrering misslyckades"
                             UIView.animateKeyframes(withDuration: 1.0, delay: 0.5, animations: {self.message.alpha = 1.0})
                         } else if let providers = providers {
                             self.stopSpinning()
-                            self.message.text = "User already exists"
+                            self.message.text = "Användare finns redan"
                             UIView.animateKeyframes(withDuration: 1.0, delay: 0.5, animations: {self.message.alpha = 1.0})
                             print(providers)
                         }
@@ -114,7 +114,7 @@ class LoginViewController: UIViewController {
                     
                 } else {
                     self.stopSpinning()
-                    print("Registration successfull!")
+                    print("Registrering genomförd!")
                     UIView.animateKeyframes(withDuration: 1.0, delay: 2.0, animations: {self.message.alpha = 1.0})
                     UIView.animateKeyframes(withDuration: 3.0, delay: 3.0, animations: {self.message.alpha = 0.0})
                     self.password.text = ""

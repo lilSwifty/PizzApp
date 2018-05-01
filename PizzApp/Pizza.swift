@@ -27,7 +27,7 @@ class Pizza : Codable {
         
         let username = user?.replacingOccurrences(of: ".", with: ",")
        
-        var listOfPizzas : [Pizza] = pizza
+        let listOfPizzas : [Pizza] = pizza
         print(listOfPizzas)
         
         //första versionen:
@@ -39,12 +39,12 @@ class Pizza : Codable {
         
         //let dictionary = ["pizza" : self.name, "price" : self.price] as [String : Any]
         let thisOrder = ["pizza" : self.name]
+        myDatabase.setValue(thisOrder)
         
-        
-        for pizza in listOfPizzas{
-            myDatabase.setValue(thisOrder)
-
-        }
+//        for pizza in listOfPizzas{
+//            myDatabase.setValue(thisOrder)
+//
+//        }
         
         
     }

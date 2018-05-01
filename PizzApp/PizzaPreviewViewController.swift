@@ -48,9 +48,7 @@ class PizzaPreviewViewController: UIViewController{
                 CustomerOrderList.customerOrder = pizzaList
             }
         }
-        
-        
-        
+                
         print("View did load: \(orderList)")
     }
     

@@ -44,7 +44,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         
         
         
-        title = "Your order"
+        title = "Din beställning"
 
     }
     
@@ -65,7 +65,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func confirmOrder(){
-        self.status.text = "order placed"
+        self.status.text = "Bekräftad"
         self.status.textColor = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
     }
     
@@ -79,12 +79,12 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         var tableFound : Bool = false
         var orderStatus : Bool = false
         
-        if status.text == "order placed" {
+        if status.text == "Bekräftad" {
             orderStatus = true
         }
         
         if let myTable = customerTable.text {
-            if myTable == "pickup" {
+            if myTable == "hämta" || myTable == "Hämta" {
                 tableFound = true
             } else if isStringAnInt(string: myTable) {
                 if let intValueOfMyTable: Int = Int(myTable) {
@@ -94,22 +94,22 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
         } else {
-            let ac = UIAlertController(title: "Table not found!", message: "Please select your table", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Ogiltigt bord!", message: "Var god och skriv ditt bord i fältet", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         }
         
         if  orderStatus {
-            let ac = UIAlertController(title: "Hang on!", message: "Your pizzas are already spinning!", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Håll ut!", message: "Dina pizzor är i snurr!", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         } else if !tableFound {
-            let ac = UIAlertController(title: "Please pick a table", message: "For pickup, type '0' ", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Välj ett bord, tack!", message: "För upphämtning, skriv 'hämta' ", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         } else {
             if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-                let reason = "Confirm order!"
+                let reason = "Bekräfta din beställning!"
                 
                 context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {
                     [unowned self] success, authenticationError in
@@ -124,19 +124,19 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                             
                             print("authentication succes! Drip drop!")
                             self.confirmOrder()
-                            let ac = UIAlertController(title: "Success!", message: "Your order has been placed!", preferredStyle: .alert)
+                            let ac = UIAlertController(title: "Succé!", message: "Din beställning är bekräftad", preferredStyle: .alert)
                             ac.addAction(UIAlertAction(title: "OK", style: .default))
                             self.present(ac, animated: true)
                             
                         } else {
-                            let ac = UIAlertController(title: "Authentication failed", message: "Try again to place your order", preferredStyle: .alert)
+                            let ac = UIAlertController(title: "Autentisering misslyckades", message: "var god, försök igen", preferredStyle: .alert)
                             ac.addAction(UIAlertAction(title: "OK", style: .default))
                             self.present(ac, animated: true)
                         }
                     }
                 }
             } else {
-                let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .alert)
+                let ac = UIAlertController(title: "Touch ID ej tillgänglig", message: "Din enhet har inte Touch ID.", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default))
                 present(ac, animated: true)
             }

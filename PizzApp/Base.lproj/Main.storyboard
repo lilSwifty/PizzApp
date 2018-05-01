@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kj-Yr-K0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-968" y="353"/>
+            <point key="canvasLocation" x="-899" y="292"/>
         </scene>
         <!--Pizza View Controller-->
         <scene sceneID="Cg2-e9-zBF">
@@ -346,6 +346,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj1-5C-nIb">
+                                <rect key="frame" x="20" y="80" width="112" height="50"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <state key="normal" title="Go to cart">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fSf-IP-bip" kind="show" identifier="goToCart" id="KQv-E7-W6P"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVv-g0-swq">
                                 <rect key="frame" x="266" y="80" width="128" height="50"/>
                                 <constraints>
@@ -359,32 +369,22 @@
                                     <action selector="addToCart:" destination="zcd-hl-0Sv" eventType="touchUpInside" id="owA-iS-Nku"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj1-5C-nIb">
-                                <rect key="frame" x="295" y="571" width="112" height="50"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                                <state key="normal" title="Go to cart">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="fSf-IP-bip" kind="show" identifier="goToCart" id="KQv-E7-W6P"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jLS-Bv-d95" firstAttribute="trailing" secondItem="tbN-Ta-VyM" secondAttribute="trailing" constant="50" id="2E5-I2-lZw"/>
-                            <constraint firstItem="jLS-Bv-d95" firstAttribute="bottom" secondItem="wj1-5C-nIb" secondAttribute="bottom" constant="115" id="2Vi-30-wwD"/>
+                            <constraint firstItem="jLS-Bv-d95" firstAttribute="bottom" secondItem="wj1-5C-nIb" secondAttribute="bottom" constant="606" id="2Vi-30-wwD"/>
                             <constraint firstItem="TYB-KS-bpw" firstAttribute="top" secondItem="jLS-Bv-d95" secondAttribute="top" id="ACY-e6-scK"/>
                             <constraint firstAttribute="trailing" secondItem="TYB-KS-bpw" secondAttribute="trailing" id="AIz-69-gyT"/>
                             <constraint firstItem="tbN-Ta-VyM" firstAttribute="top" secondItem="jLS-Bv-d95" secondAttribute="top" constant="57" id="CgI-oT-Cbi"/>
-                            <constraint firstItem="6mF-zy-lou" firstAttribute="trailing" secondItem="wj1-5C-nIb" secondAttribute="trailing" id="EKD-gh-uYN"/>
+                            <constraint firstItem="6mF-zy-lou" firstAttribute="trailing" secondItem="wj1-5C-nIb" secondAttribute="trailing" constant="275" id="EKD-gh-uYN"/>
                             <constraint firstItem="NVv-g0-swq" firstAttribute="top" secondItem="jLS-Bv-d95" secondAttribute="top" constant="16" id="EaD-hA-tbx"/>
                             <constraint firstItem="NVv-g0-swq" firstAttribute="leading" secondItem="jLS-Bv-d95" secondAttribute="leading" constant="266" id="K0n-Mi-pAg"/>
                             <constraint firstItem="NVv-g0-swq" firstAttribute="trailing" secondItem="gHW-nn-upj" secondAttribute="trailingMargin" id="WV6-pe-c9n"/>
                             <constraint firstItem="TYB-KS-bpw" firstAttribute="leading" secondItem="gHW-nn-upj" secondAttribute="leading" id="Wks-kX-yho"/>
                             <constraint firstItem="tbN-Ta-VyM" firstAttribute="leading" secondItem="gHW-nn-upj" secondAttribute="leadingMargin" id="aPf-g9-baI"/>
-                            <constraint firstItem="wj1-5C-nIb" firstAttribute="top" secondItem="6mF-zy-lou" secondAttribute="bottom" constant="40" id="cf1-sz-ZxM"/>
-                            <constraint firstItem="wj1-5C-nIb" firstAttribute="leading" secondItem="jLS-Bv-d95" secondAttribute="leading" constant="295" id="dCy-5d-drg"/>
+                            <constraint firstItem="wj1-5C-nIb" firstAttribute="top" secondItem="6mF-zy-lou" secondAttribute="bottom" constant="-451" id="cf1-sz-ZxM"/>
+                            <constraint firstItem="wj1-5C-nIb" firstAttribute="leading" secondItem="jLS-Bv-d95" secondAttribute="leading" constant="20" id="dCy-5d-drg"/>
                             <constraint firstItem="TYB-KS-bpw" firstAttribute="bottom" secondItem="jLS-Bv-d95" secondAttribute="bottom" id="fPp-NS-Xq1"/>
                             <constraint firstItem="6mF-zy-lou" firstAttribute="top" secondItem="NVv-g0-swq" secondAttribute="bottom" constant="75" id="haA-JQ-S0m"/>
                             <constraint firstItem="6mF-zy-lou" firstAttribute="leading" secondItem="jLS-Bv-d95" secondAttribute="leading" constant="7" id="lCd-yc-cbm"/>
@@ -555,7 +555,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdW-Jt-OON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-288" y="827"/>
+            <point key="canvasLocation" x="-206" y="668"/>
         </scene>
     </scenes>
     <resources>

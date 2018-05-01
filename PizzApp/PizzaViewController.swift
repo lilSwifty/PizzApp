@@ -23,7 +23,7 @@ class PizzaViewController: UIViewController {
     var listOfAllPanPizzas = [Pizza]()
     var listOfAllSpecialPizzas = [Pizza]()
     
-    var recievedOrder : [Pizza] = []
+    var recievedOrder = PizzaPreviewViewController.CustomerOrderList.customerOrder
     
     var expandCell = false
     
@@ -36,6 +36,7 @@ class PizzaViewController: UIViewController {
     let sectionSpecialPizza = 2
     
     @IBOutlet weak var tableview: UITableView!
+    
     
     @IBAction func logout(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
@@ -56,11 +57,13 @@ class PizzaViewController: UIViewController {
         tableview.dataSource = self
         
         updatePizzaInformation()
-        try! defaults.set(PropertyListEncoder().encode(recievedOrder), forKey: key)
+        
+        try! defaults.set(PropertyListEncoder().encode(PizzaPreviewViewController.CustomerOrderList.customerOrder), forKey: key)
+        
         print("antal \(listOfAllPizzas.count + listOfAllPanPizzas.count + listOfAllSpecialPizzas.count)")
         tableview.backgroundView = imageview
         
-        
+        print("Order recieved: \(recievedOrder)")
         // Do any additional setup after loading the view.
     }
     
@@ -74,6 +77,7 @@ class PizzaViewController: UIViewController {
         if let selectedRowNotNill = selectedRow {
             tableview.deselectRow(at: selectedRowNotNill, animated: false)
         }
+        print("Order recieved: \(PizzaPreviewViewController.CustomerOrderList.customerOrder)")
     }
     
 }
@@ -164,7 +168,7 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
                 }
 
             } else if let destinationVC = segue.destination as? ShoppingCartViewController {
-                destinationVC.recievedOrder = recievedOrder
+                destinationVC.recievedOrder = PizzaPreviewViewController.CustomerOrderList.customerOrder
             }
             
         }

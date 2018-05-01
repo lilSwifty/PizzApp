@@ -22,6 +22,9 @@ class PizzaPreviewViewController: UIViewController{
     
     var order : [Pizza] = []
     
+    struct CustomerOrderList {
+        static var customerOrder : [Pizza] = []
+    }
     
     
     @IBOutlet weak var pizzaName: UILabel!
@@ -38,9 +41,11 @@ class PizzaPreviewViewController: UIViewController{
         pizzaName.text = "\(pizzaToOrder!.name)   \(pizzaToOrder!.price)0€"
         
         setToppings()
+        
         if let data = defaults.object(forKey: key) as? Data {
             if let pizzaList = try? PropertyListDecoder().decode([Pizza].self, from: data){
-                order = pizzaList
+                //order = pizzaList
+                CustomerOrderList.customerOrder = pizzaList
             }
         }
         
@@ -52,8 +57,11 @@ class PizzaPreviewViewController: UIViewController{
     
     
     @IBAction func addToCart(_ sender: UIButton) {
-        order.append(pizzaToOrder!)
-        try! defaults.set(PropertyListEncoder().encode(order), forKey: key)
+//        order.append(pizzaToOrder!)
+//        try! defaults.set(PropertyListEncoder().encode(order), forKey: key)
+        
+        CustomerOrderList.customerOrder.append(pizzaToOrder!)
+        try! defaults.set(PropertyListEncoder().encode(CustomerOrderList.customerOrder), forKey: key)
         print("Button pressed: \(order)")
         
     }
@@ -63,11 +71,11 @@ class PizzaPreviewViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? ShoppingCartViewController {
-            destinationVC.recievedOrder = order
-            
-        } else if let destinationVC = segue.destination as? PizzaViewController {
-            destinationVC.recievedOrder = order
+            destinationVC.recievedOrder = CustomerOrderList.customerOrder
         }
+//         else if let destinationVC = segue.destination as? PizzaViewController {
+//            destinationVC.recievedOrder = CustomerOrderList.customerOrder
+//        }
     }
     
     func setToppings(){

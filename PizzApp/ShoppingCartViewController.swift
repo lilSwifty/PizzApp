@@ -69,10 +69,13 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         self.status.textColor = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
     }
     
+    func isStringAnInt(string: String) -> Bool {
+        return Int(string) != nil
+    }
+    
     func authenticateUser() {
         let context = LAContext()
         var error: NSError?
-        var myTable = customerTable.text
         var tableFound : Bool = false
         var orderStatus : Bool = false
         
@@ -80,29 +83,21 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
             orderStatus = true
         }
         
-        
-//        if  myTable == "pickup" {
-//            tableFound = true
-//        }else if myTable == nil{
-//            tableFound = false
-//        }else
-//        tables.contains(Int (myTable!)!)
-        
-        
-        // HÄÄÄR JOOOONIIII HÄÄÄÄR!!!! :)))) 
-        
-        if  myTable == "" {
-            tableFound = false
-        }else {
-            tableFound = true
+        if let myTable = customerTable.text {
+            if myTable == "pickup" {
+                tableFound = true
+            } else if isStringAnInt(string: myTable) {
+                if let intValueOfMyTable: Int = Int(myTable) {
+                    if intValueOfMyTable >= 0 && intValueOfMyTable <= 20 {
+                        tableFound = true
+                    }
+                }
+            }
+        } else {
+            let ac = UIAlertController(title: "Table not found!", message: "Please select your table", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
         }
-
-//        if myTable! >= 0 && myTable! <= 20 {
-//            tableFound = true
-//        }else if myTable == nil {
-//            tableFound = false
-//        }
-        
         
         if  orderStatus {
             let ac = UIAlertController(title: "Hang on!", message: "Your pizzas are already spinning!", preferredStyle: .alert)
@@ -146,8 +141,6 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                 present(ac, animated: true)
             }
         }
-        
-        
     }
     
     

@@ -16,10 +16,7 @@ class PizzaPreviewViewController: UIViewController{
     let key = "AddToList"
     
     var pizzaToOrder:Pizza?
-    
-    var orderList : [String] = []
     var totalPrice : Double = 0.0
-    
     var order : [Pizza] = []
     
     struct CustomerOrderList {
@@ -44,37 +41,18 @@ class PizzaPreviewViewController: UIViewController{
         
         if let data = defaults.object(forKey: key) as? Data {
             if let pizzaList = try? PropertyListDecoder().decode([Pizza].self, from: data){
-                //order = pizzaList
                 CustomerOrderList.customerOrder = pizzaList
             }
         }
-                
-        print("View did load: \(orderList)")
+        print("View did load:")
     }
     
-    
-    
     @IBAction func addToCart(_ sender: UIButton) {
-//        order.append(pizzaToOrder!)
-//        try! defaults.set(PropertyListEncoder().encode(order), forKey: key)
-        
         CustomerOrderList.customerOrder.append(pizzaToOrder!)
         try! defaults.set(PropertyListEncoder().encode(CustomerOrderList.customerOrder), forKey: key)
         print("Button pressed: \(order)")
-        
     }
-    
-    
 
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? ShoppingCartViewController {
-            destinationVC.recievedOrder = CustomerOrderList.customerOrder
-        }
-//         else if let destinationVC = segue.destination as? PizzaViewController {
-//            destinationVC.recievedOrder = CustomerOrderList.customerOrder
-//        }
-    }
     
     func setToppings(){
         
@@ -121,8 +99,5 @@ class PizzaPreviewViewController: UIViewController{
             topping6.text = pizzaToOrder?.topping[5]
         }
     }
-    
-
-
 
 }

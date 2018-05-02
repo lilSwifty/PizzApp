@@ -12,9 +12,7 @@ import AudioToolbox
 import Firebase
 
 class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var recievedOrder : [Pizza] = []
-    
+
     let pizza : Pizza? = nil
     
     let tables : [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
@@ -49,7 +47,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        priceLabel.text = "pris: \(recievedOrder.map({pizza in pizza.price}).reduce(0, +))0€"
+        priceLabel.text = "pris: \(PizzaPreviewViewController.CustomerOrderList.customerOrder.map({pizza in pizza.price}).reduce(0, +))0€"
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,7 +56,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func checkOrder(){
-        if recievedOrder.isEmpty {
+        if PizzaPreviewViewController.CustomerOrderList.customerOrder.isEmpty {
             self.placeOrderBtn.isHidden = true
             self.status.isHidden = true
         }
@@ -118,8 +116,8 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                         if success {
                             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             
-                            for i in 0..<(self.recievedOrder.count){
-                                self.recievedOrder[i].saveToFirebase(pizza: [self.recievedOrder[i]])
+                            for i in 0..<(PizzaPreviewViewController.CustomerOrderList.customerOrder.count){
+                                PizzaPreviewViewController.CustomerOrderList.customerOrder[i].saveToFirebase(pizza: [PizzaPreviewViewController.CustomerOrderList.customerOrder[i]])
                             }
                             
                             print("authentication succes! Drip drop!")
@@ -146,13 +144,13 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recievedOrder.count
+        return PizzaPreviewViewController.CustomerOrderList.customerOrder.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "shoppingCell") as! ShoppingListTableViewCell
         
-        cell.pizzaLabel.text = recievedOrder[indexPath.row].name
+        cell.pizzaLabel.text = PizzaPreviewViewController.CustomerOrderList.customerOrder[indexPath.row].name
         
         return cell
     }
@@ -165,11 +163,11 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             
-            recievedOrder.remove(at: indexPath.row)
+            PizzaPreviewViewController.CustomerOrderList.customerOrder.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            try! defaults.set(PropertyListEncoder().encode(recievedOrder), forKey: key)
+            try! defaults.set(PropertyListEncoder().encode(PizzaPreviewViewController.CustomerOrderList.customerOrder), forKey: key)
             tableView.reloadData()
-            priceLabel.text = "pris: \(recievedOrder.map({pizza in pizza.price}).reduce(0, +))0€"
+            priceLabel.text = "pris: \(PizzaPreviewViewController.CustomerOrderList.customerOrder.map({pizza in pizza.price}).reduce(0, +))0€"
         }
     }
     

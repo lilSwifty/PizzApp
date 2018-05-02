@@ -67,12 +67,8 @@ class PizzaViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        // Detta fungerar inte riktigt, fråga Erik ?
-        // Cellen är grå när man kommer tillbaka
+    override func viewWillAppear(_ animated: Bool) {
         let selectedRow: IndexPath? = tableview.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
             tableview.deselectRow(at: selectedRowNotNill, animated: false)
@@ -167,10 +163,8 @@ extension PizzaViewController: UITableViewDelegate, UITableViewDataSource{
                 default : break
                 }
 
-            } else if let destinationVC = segue.destination as? ShoppingCartViewController {
-                destinationVC.recievedOrder = PizzaPreviewViewController.CustomerOrderList.customerOrder
             }
-            
+    
         }
     
     

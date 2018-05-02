@@ -41,10 +41,6 @@ class Pizza : Codable {
         let thisOrder = ["pizza" : self.name]
         myDatabase.setValue(thisOrder)
         
-//        for pizza in listOfPizzas{
-//            myDatabase.setValue(thisOrder)
-//
-//        }
         
         
     }

@@ -55,6 +55,8 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         priceLabel.text = "pris: \(PizzaPreviewViewController.CustomerOrderList.customerOrder.map({pizza in pizza.price}).reduce(0, +))0€"
         confirmation = false
         defaults.set(confirmation, forKey: "status")
+        customerTable.text = ""
+        defaults.set(self.customerTable.text, forKey: "customerTable")
         checkIfConfirmed()
     }
     
@@ -148,7 +150,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         } else if !tableFound {
-            let ac = UIAlertController(title: "Välj ett bord, tack!", message: "För upphämtning, skriv 'hämta' ", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Välj ett bord, tack!", message: "För upphämtning, välj '0' ", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         } else {
@@ -165,7 +167,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                             for i in 0..<(PizzaPreviewViewController.CustomerOrderList.customerOrder.count){
                                 self.pizzaNamesArray.append(PizzaPreviewViewController.CustomerOrderList.customerOrder[i].name)
                                 self.saveThisToFireBase(pizza: self.pizzaNamesArray, table: self.customerTable.text!)
-                                
+                                self.defaults.set(self.customerTable.text, forKey: "customerTable")
                             }
                             
                             print("authentication succes! Drip drop!")

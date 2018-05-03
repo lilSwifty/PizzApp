@@ -18,7 +18,7 @@ class PizzaViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     let key = "AddToList"
-    
+    var cartVC = ShoppingCartViewController()
     var listOfAllPizzas = [Pizza]()
     var listOfAllPanPizzas = [Pizza]()
     var listOfAllSpecialPizzas = [Pizza]()
@@ -44,6 +44,7 @@ class PizzaViewController: UIViewController {
         do {
             try firebaseAuth.signOut()
             self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

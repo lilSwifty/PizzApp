@@ -107,7 +107,7 @@
                         <constraints>
                             <constraint firstItem="Uxt-Zt-twF" firstAttribute="trailing" secondItem="YOx-ej-Z0d" secondAttribute="trailing" id="098-QH-YcQ"/>
                             <constraint firstItem="0cy-a9-Q8G" firstAttribute="centerX" secondItem="Wv9-ew-yOD" secondAttribute="centerX" id="5ek-jv-eIk"/>
-                            <constraint firstItem="ePj-nZ-iex" firstAttribute="leading" secondItem="7TV-CI-Cpq" secondAttribute="leading" id="6PR-qv-fbV"/>
+                            <constraint firstItem="ePj-nZ-iex" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7TV-CI-Cpq" secondAttribute="leading" id="6PR-qv-fbV"/>
                             <constraint firstItem="Wv9-ew-yOD" firstAttribute="centerX" secondItem="ePj-nZ-iex" secondAttribute="centerX" id="8Cz-sD-yBT"/>
                             <constraint firstItem="ven-qC-0bp" firstAttribute="leading" secondItem="c3h-l0-I3B" secondAttribute="leading" constant="39" id="9Dk-xH-86Q"/>
                             <constraint firstItem="Uxt-Zt-twF" firstAttribute="leading" secondItem="YOx-ej-Z0d" secondAttribute="leading" id="AiL-wL-qzp"/>
@@ -129,7 +129,7 @@
                             <constraint firstItem="0zY-Gx-6yS" firstAttribute="trailing" secondItem="ePj-nZ-iex" secondAttribute="trailing" id="muW-gt-ton"/>
                             <constraint firstItem="ePj-nZ-iex" firstAttribute="trailing" secondItem="7TV-CI-Cpq" secondAttribute="trailing" id="prP-PS-vSZ"/>
                             <constraint firstItem="YOx-ej-Z0d" firstAttribute="leading" secondItem="0cy-a9-Q8G" secondAttribute="leading" id="qY1-pS-KHS"/>
-                            <constraint firstItem="YOx-ej-Z0d" firstAttribute="trailing" secondItem="0cy-a9-Q8G" secondAttribute="trailing" id="rK1-c5-KgH"/>
+                            <constraint firstItem="YOx-ej-Z0d" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0cy-a9-Q8G" secondAttribute="trailing" id="rK1-c5-KgH"/>
                             <constraint firstItem="YOx-ej-Z0d" firstAttribute="top" secondItem="Uxt-Zt-twF" secondAttribute="bottom" constant="8" symbolic="YES" id="vVO-q8-JTv"/>
                             <constraint firstItem="0cy-a9-Q8G" firstAttribute="top" secondItem="YOx-ej-Z0d" secondAttribute="bottom" constant="8" symbolic="YES" id="woe-Nf-VcT"/>
                         </constraints>
@@ -276,6 +276,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eil-j0-41M"/>
                     <connections>
+                        <outlet property="goToCart" destination="EOe-Wm-aE2" id="ayY-as-y6b"/>
                         <outlet property="tableview" destination="Ltz-wH-HOy" id="e5a-e0-VWz"/>
                         <segue destination="zcd-hl-0Sv" kind="show" identifier="showPizza" id="fqV-S1-DTS"/>
                         <segue destination="xaO-Qa-z5U" kind="show" identifier="logout" id="xL1-GA-JST"/>
@@ -428,6 +429,8 @@
                         <viewLayoutGuide key="safeArea" id="jLS-Bv-d95"/>
                     </view>
                     <connections>
+                        <outlet property="addToCartBtn" destination="NVv-g0-swq" id="CH7-GA-RAM"/>
+                        <outlet property="goToCart" destination="wj1-5C-nIb" id="viU-Pj-nCi"/>
                         <outlet property="pizzaName" destination="tbN-Ta-VyM" id="XhF-13-z1u"/>
                         <outlet property="topping1" destination="NEp-Mo-dnA" id="Ksk-r4-5tI"/>
                         <outlet property="topping2" destination="gFS-4a-0KR" id="Ya0-Q7-2Yi"/>
@@ -501,7 +504,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="251"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPx-sQ-syk">
-                                        <rect key="frame" x="335" y="8" width="53" height="35.666666666666664"/>
+                                        <rect key="frame" x="335" y="8" width="53" height="36"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                         <state key="normal" title="Beställ">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -511,19 +514,30 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ej bekräftad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMK-uA-oOl">
-                                        <rect key="frame" x="8.0000000000000071" y="12.000000000000002" width="118.66666666666669" height="27.666666666666671"/>
+                                        <rect key="frame" x="8" y="12" width="119" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pris:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Uaz-24-XQE">
-                                        <rect key="frame" x="340.33333333333331" y="103.66666666666664" width="47.666666666666686" height="60.333333333333329"/>
+                                        <rect key="frame" x="340" y="104" width="48" height="60"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyf-Nd-IhH">
+                                        <rect key="frame" x="6" y="190" width="149" height="36"/>
+                                        <color key="backgroundColor" red="0.59606995558375631" green="0.59606995558375631" blue="0.59606995558375631" alpha="0.57223886986301364" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="Lägg ny beställning">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="orderServed:" destination="fSf-IP-bip" eventType="touchUpInside" id="H5O-MC-aO7"/>
+                                        </connections>
+                                    </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kx5-Ze-9yK">
-                                        <rect key="frame" x="7.9999999999999964" y="85.666666666666657" width="51.666666666666657" height="30"/>
+                                        <rect key="frame" x="8" y="86" width="52" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -535,14 +549,17 @@
                                     <constraint firstAttribute="bottom" secondItem="Uaz-24-XQE" secondAttribute="bottom" constant="87" id="8m5-xU-OY0"/>
                                     <constraint firstItem="Uaz-24-XQE" firstAttribute="top" secondItem="HPx-sQ-syk" secondAttribute="bottom" constant="60" id="Arx-XA-aiK"/>
                                     <constraint firstItem="PMK-uA-oOl" firstAttribute="leading" secondItem="QwQ-4e-CsH" secondAttribute="leadingMargin" id="CEQ-Nq-Gx3"/>
+                                    <constraint firstItem="Tyf-Nd-IhH" firstAttribute="top" secondItem="Kx5-Ze-9yK" secondAttribute="bottom" constant="74" id="FZe-tJ-Rzw"/>
                                     <constraint firstItem="PMK-uA-oOl" firstAttribute="top" secondItem="QwQ-4e-CsH" secondAttribute="top" constant="12" id="HUm-8n-bmI"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PMK-uA-oOl" secondAttribute="trailing" constant="20" symbolic="YES" id="J6y-MK-aBs"/>
                                     <constraint firstAttribute="trailing" secondItem="HPx-sQ-syk" secondAttribute="trailing" constant="26" id="P2B-1E-dnL"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Tyf-Nd-IhH" secondAttribute="trailing" constant="20" symbolic="YES" id="VIW-NX-Nze"/>
                                     <constraint firstItem="HPx-sQ-syk" firstAttribute="trailing" secondItem="Uaz-24-XQE" secondAttribute="trailing" id="YJO-Ia-Tpv"/>
                                     <constraint firstItem="Uaz-24-XQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QwQ-4e-CsH" secondAttribute="leading" constant="20" symbolic="YES" id="alu-Sj-pt5"/>
                                     <constraint firstItem="HPx-sQ-syk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QwQ-4e-CsH" secondAttribute="leading" constant="20" symbolic="YES" id="bBv-4X-4s0"/>
                                     <constraint firstItem="PMK-uA-oOl" firstAttribute="leading" secondItem="Kx5-Ze-9yK" secondAttribute="leading" id="l7h-qU-N5T"/>
                                     <constraint firstItem="HPx-sQ-syk" firstAttribute="top" secondItem="QwQ-4e-CsH" secondAttribute="topMargin" id="pIh-Vr-LxQ"/>
+                                    <constraint firstItem="Tyf-Nd-IhH" firstAttribute="leading" secondItem="QwQ-4e-CsH" secondAttribute="leading" constant="6" id="u7y-A7-7fG"/>
                                     <constraint firstItem="Kx5-Ze-9yK" firstAttribute="top" secondItem="PMK-uA-oOl" secondAttribute="bottom" constant="46" id="x1v-ux-1Hq"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kx5-Ze-9yK" secondAttribute="trailing" constant="20" symbolic="YES" id="yX8-GB-ULU"/>
                                 </constraints>

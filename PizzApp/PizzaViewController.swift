@@ -37,6 +37,7 @@ class PizzaViewController: UIViewController {
     
     @IBOutlet weak var tableview: UITableView!
     
+    @IBOutlet weak var goToCart: UIButton!
     
     @IBAction func logout(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
@@ -56,6 +57,10 @@ class PizzaViewController: UIViewController {
         tableview.delegate = self
         tableview.dataSource = self
         
+        let backItem = UIBarButtonItem()
+        backItem.title = "Tillbaka"
+        navigationItem.backBarButtonItem = backItem
+        
         updatePizzaInformation()
         
         try! defaults.set(PropertyListEncoder().encode(PizzaPreviewViewController.CustomerOrderList.customerOrder), forKey: key)
@@ -69,11 +74,20 @@ class PizzaViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        checkIfCartIsEmpty()
         let selectedRow: IndexPath? = tableview.indexPathForSelectedRow
         if let selectedRowNotNill = selectedRow {
             tableview.deselectRow(at: selectedRowNotNill, animated: false)
         }
         print("Order recieved: \(PizzaPreviewViewController.CustomerOrderList.customerOrder)")
+    }
+    
+    func checkIfCartIsEmpty(){
+        if PizzaPreviewViewController.CustomerOrderList.customerOrder.isEmpty {
+            self.goToCart.isHidden = true
+        } else {
+            self.goToCart.isHidden = false
+        }
     }
     
 }

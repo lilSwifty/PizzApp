@@ -13,12 +13,18 @@ import Firebase
 
 class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let pizza : Pizza? = nil
+    //let pizza : Pizza? = nil
     
     let tables : [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     
+    let greenColor = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+    let redColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
     let defaults = UserDefaults.standard
     let key = "AddToList"
+    
+    var pizzaNamesArray : [String] = []
+    
+    var confirmation : Bool = false
     
     @IBOutlet weak var placeOrderBtn: UIButton!
     @IBOutlet weak var status: UILabel!
@@ -28,32 +34,49 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableview: UITableView!
     
+    var table = 0
+    
     @IBAction func placeOrder(_ sender: UIButton) {
         checkOrder()
         authenticateUser()
         
     }
     
-
+    
+    // Bra funktion att ha när man testar sin kod för att lätt rensa sidan!
+    @IBAction func orderServed(_ sender: UIButton) {
+        resetAll()
+    }
+    
+    func resetAll(){
+        PizzaPreviewViewController.CustomerOrderList.customerOrder.removeAll()
+        try! defaults.set(PropertyListEncoder().encode(PizzaPreviewViewController.CustomerOrderList.customerOrder), forKey: key)
+        tableview.reloadData()
+        priceLabel.text = "pris: \(PizzaPreviewViewController.CustomerOrderList.customerOrder.map({pizza in pizza.price}).reduce(0, +))0€"
+        confirmation = false
+        defaults.set(confirmation, forKey: "status")
+        checkIfConfirmed()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.reloadData()
-        
-        
-        
+        confirmation = defaults.bool(forKey: "status")
         title = "Din beställning"
-
+        checkIfConfirmed()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         priceLabel.text = "pris: \(PizzaPreviewViewController.CustomerOrderList.customerOrder.map({pizza in pizza.price}).reduce(0, +))0€"
+        checkIfConfirmed()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     func checkOrder(){
         if PizzaPreviewViewController.CustomerOrderList.customerOrder.isEmpty {
@@ -64,7 +87,30 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     
     func confirmOrder(){
         self.status.text = "Bekräftad"
-        self.status.textColor = UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        confirmation = true
+        defaults.set(confirmation, forKey: "status")
+        checkIfConfirmed()
+    }
+    
+    func checkIfConfirmed(){
+        if confirmation == true {
+            self.status.textColor = greenColor
+            self.status.text = "Bekräftad"
+        } else {
+            self.status.textColor = redColor
+            self.status.text = "Ej bekräftad"
+        }
+    }
+    
+    func saveThisToFireBase(pizza : [String], table : String ){
+        let user = Auth.auth().currentUser?.email
+        let username = user?.replacingOccurrences(of: ".", with: ",")
+        
+        
+        let myDatabase = Database.database().reference().child("Orders").child("From table: \(table)").child(username!)
+        
+        
+        myDatabase.setValue(pizzaNamesArray)
     }
     
     func isStringAnInt(string: String) -> Bool {
@@ -117,7 +163,9 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
                             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                             
                             for i in 0..<(PizzaPreviewViewController.CustomerOrderList.customerOrder.count){
-                                PizzaPreviewViewController.CustomerOrderList.customerOrder[i].saveToFirebase(pizza: [PizzaPreviewViewController.CustomerOrderList.customerOrder[i]])
+                                self.pizzaNamesArray.append(PizzaPreviewViewController.CustomerOrderList.customerOrder[i].name)
+                                self.saveThisToFireBase(pizza: self.pizzaNamesArray, table: self.customerTable.text!)
+                                
                             }
                             
                             print("authentication succes! Drip drop!")

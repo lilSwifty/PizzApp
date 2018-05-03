@@ -18,6 +18,7 @@ class PizzaPreviewViewController: UIViewController{
     var pizzaToOrder:Pizza?
     var totalPrice : Double = 0.0
     var order : [Pizza] = []
+    var confirmation = false
     
     struct CustomerOrderList {
         static var customerOrder : [Pizza] = []
@@ -31,11 +32,17 @@ class PizzaPreviewViewController: UIViewController{
     @IBOutlet weak var topping4: UILabel!
     @IBOutlet weak var topping5: UILabel!
     @IBOutlet weak var topping6: UILabel!
+    @IBOutlet weak var addToCartBtn: UIButton!
     
+    @IBOutlet weak var goToCart: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pizzaName.text = "\(pizzaToOrder!.name)   \(pizzaToOrder!.price)0€"
+        checkIfCartIsEmpty()
+        let backItem = UIBarButtonItem()
+        backItem.title = "Tillbaka"
+        navigationItem.backBarButtonItem = backItem
         
         setToppings()
         
@@ -47,12 +54,29 @@ class PizzaPreviewViewController: UIViewController{
         print("View did load:")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        checkIfCartIsEmpty()
+        defaults.bool(forKey: "status")
+    }
+    
     @IBAction func addToCart(_ sender: UIButton) {
         CustomerOrderList.customerOrder.append(pizzaToOrder!)
         try! defaults.set(PropertyListEncoder().encode(CustomerOrderList.customerOrder), forKey: key)
         print("Button pressed: \(order)")
+        checkIfCartIsEmpty()
     }
 
+    func checkIfCartIsEmpty(){
+        if PizzaPreviewViewController.CustomerOrderList.customerOrder.isEmpty {
+            self.goToCart.isHidden = true
+        } else {
+            self.goToCart.isHidden = false
+        }
+    }
+    
+    func checkForPendingorder(){
+        
+    }
     
     func setToppings(){
         

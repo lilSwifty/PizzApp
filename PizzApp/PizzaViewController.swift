@@ -45,6 +45,10 @@ class PizzaViewController: UIViewController {
             try firebaseAuth.signOut()
             self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
             
+            //Angelas version: 
+//            navigationController?.popToRootViewController(animated: true)
+            print("signout successfull")
+            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

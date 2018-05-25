@@ -21,13 +21,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0j-jQ-OwD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pizzaHello" translatesAutoresizingMaskIntoConstraints="NO" id="5d5-bX-eQK">
-                                        <rect key="frame" x="40" y="190" width="295" height="287"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchPizza" translatesAutoresizingMaskIntoConstraints="NO" id="0ic-GV-WKu">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="0ic-GV-WKu" firstAttribute="top" secondItem="p0j-jQ-OwD" secondAttribute="top" id="HLk-MJ-pjv"/>
+                                    <constraint firstItem="0ic-GV-WKu" firstAttribute="leading" secondItem="p0j-jQ-OwD" secondAttribute="leading" id="faz-xI-ZRd"/>
+                                    <constraint firstAttribute="bottom" secondItem="0ic-GV-WKu" secondAttribute="bottom" id="hIa-XD-exo"/>
+                                    <constraint firstAttribute="trailing" secondItem="0ic-GV-WKu" secondAttribute="trailing" id="qRo-nu-6nq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,6 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pizzaHello" width="657" height="564"/>
+        <image name="launchPizza" width="2736" height="4104"/>
     </resources>
 </document>

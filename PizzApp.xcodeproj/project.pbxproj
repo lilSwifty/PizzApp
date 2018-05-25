@@ -21,6 +21,8 @@
 		5301DC1E2084C3AF00ADD90F /* ToppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */; };
 		535566BD2091BA0100A59AF3 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535566BC2091BA0100A59AF3 /* ShoppingCartViewController.swift */; };
 		535566BF2091DF1500A59AF3 /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535566BE2091DF1500A59AF3 /* ShoppingListTableViewCell.swift */; };
+		535E253820B8370F0041747A /* Version2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E253620B8370F0041747A /* Version2TableViewCell.swift */; };
+		535E253920B8370F0041747A /* Version2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535E253720B8370F0041747A /* Version2TableViewCell.xib */; };
 		53FE3F4F20921A9B001492A3 /* note7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53FE3F4E20921A9A001492A3 /* note7.wav */; };
 		53FE3F9B20972C8B001492A3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FE3F9A20972C8B001492A3 /* LoginViewController.swift */; };
 		53FE3F9D20973813001492A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53FE3F9C20973813001492A3 /* GoogleService-Info.plist */; };
@@ -44,6 +46,8 @@
 		5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToppingTableViewCell.swift; sourceTree = "<group>"; };
 		535566BC2091BA0100A59AF3 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		535566BE2091DF1500A59AF3 /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		535E253620B8370F0041747A /* Version2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version2TableViewCell.swift; sourceTree = "<group>"; };
+		535E253720B8370F0041747A /* Version2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Version2TableViewCell.xib; sourceTree = "<group>"; };
 		53FE3F4E20921A9A001492A3 /* note7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = note7.wav; sourceTree = "<group>"; };
 		53FE3F9A20972C8B001492A3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		53FE3F9C20973813001492A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		5301DBE62080881800ADD90F = {
 			isa = PBXGroup;
 			children = (
+				535E253A20B837330041747A /* Cells */,
 				5301DBF12080881800ADD90F /* PizzApp */,
 				5301DBF02080881800ADD90F /* Products */,
 				B02CF48858B059DAA531F659 /* Pods */,
@@ -91,17 +96,26 @@
 				5301DC1920839BB700ADD90F /* PizzaPreviewViewController.swift */,
 				535566BC2091BA0100A59AF3 /* ShoppingCartViewController.swift */,
 				535566BE2091DF1500A59AF3 /* ShoppingListTableViewCell.swift */,
-				5301DBFC2080881800ADD90F /* Assets.xcassets */,
+				5301DC152080CC1600ADD90F /* Pizza.swift */,
+				5301DC172080F33300ADD90F /* modelDB.swift */,
+				5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */,
 				5301DBFE2080881800ADD90F /* LaunchScreen.storyboard */,
 				5301DC012080881800ADD90F /* Info.plist */,
 				53FE3F9C20973813001492A3 /* GoogleService-Info.plist */,
 				5301DBF92080881800ADD90F /* PizzApp.xcdatamodeld */,
-				5301DC152080CC1600ADD90F /* Pizza.swift */,
-				5301DC172080F33300ADD90F /* modelDB.swift */,
-				5301DC1D2084C3AF00ADD90F /* ToppingTableViewCell.swift */,
+				5301DBFC2080881800ADD90F /* Assets.xcassets */,
 				53FE3F4E20921A9A001492A3 /* note7.wav */,
 			);
 			path = PizzApp;
+			sourceTree = "<group>";
+		};
+		535E253A20B837330041747A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				535E253620B8370F0041747A /* Version2TableViewCell.swift */,
+				535E253720B8370F0041747A /* Version2TableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A2DC04834F78E1268B9506B0 /* Frameworks */ = {
@@ -186,6 +200,7 @@
 				5301DC002080881800ADD90F /* LaunchScreen.storyboard in Resources */,
 				5301DBFD2080881800ADD90F /* Assets.xcassets in Resources */,
 				53FE3F9D20973813001492A3 /* GoogleService-Info.plist in Resources */,
+				535E253920B8370F0041747A /* Version2TableViewCell.xib in Resources */,
 				53FE3F4F20921A9B001492A3 /* note7.wav in Resources */,
 				5301DBF82080881800ADD90F /* Main.storyboard in Resources */,
 			);
@@ -267,6 +282,7 @@
 				5301DC1A20839BB700ADD90F /* PizzaPreviewViewController.swift in Sources */,
 				5301DC182080F33300ADD90F /* modelDB.swift in Sources */,
 				5301DC12208097E000ADD90F /* CustomPizzaCell.swift in Sources */,
+				535E253820B8370F0041747A /* Version2TableViewCell.swift in Sources */,
 				5301DBFB2080881800ADD90F /* PizzApp.xcdatamodeld in Sources */,
 				5301DC1E2084C3AF00ADD90F /* ToppingTableViewCell.swift in Sources */,
 			);

@@ -51,8 +51,6 @@ class LoginViewController: UIViewController {
     
     func login(){
         
-        
-        
         Auth.auth().signIn(withEmail: email.text!, password: password
             .text!) { (user, error) in
                 if error != nil {

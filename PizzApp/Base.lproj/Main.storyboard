@@ -37,7 +37,7 @@
                                     <action selector="register:" destination="xaO-Qa-z5U" eventType="touchUpInside" id="Lnf-3g-ccY"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="victor@fundberg.com" borderStyle="roundedRect" placeholder="namn@namn.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uxt-Zt-twF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="mani@sedighi.com" borderStyle="roundedRect" placeholder="namn@namn.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uxt-Zt-twF">
                                 <rect key="frame" x="85" y="256" width="244" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -57,7 +57,7 @@
                                     <action selector="login:" destination="xaO-Qa-z5U" eventType="touchUpInside" id="63e-c8-PwI"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hejhej" borderStyle="roundedRect" placeholder="lösenord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YOx-ej-Z0d">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="banani" borderStyle="roundedRect" placeholder="lösenord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YOx-ej-Z0d">
                                 <rect key="frame" x="85" y="294" width="244" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kj-Yr-K0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-900.00000000000011" y="291.84782608695656"/>
+            <point key="canvasLocation" x="-1301" y="632"/>
         </scene>
         <!--Pizza View Controller-->
         <scene sceneID="Cg2-e9-zBF">
@@ -284,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onw-F6-ZP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="472" y="372"/>
+            <point key="canvasLocation" x="-32" y="363"/>
         </scene>
         <!--Pizza Preview View Controller-->
         <scene sceneID="pYm-tJ-q0B">
@@ -294,7 +294,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="oldPaper" translatesAutoresizingMaskIntoConstraints="NO" id="TYB-KS-bpw">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pizzaListBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="TYB-KS-bpw">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mF-zy-lou">
@@ -442,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fta-9D-Dub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240.5797101449277" y="966.84782608695662"/>
+            <point key="canvasLocation" x="452" y="1096"/>
         </scene>
         <!--Shopping Cart View Controller-->
         <scene sceneID="yw7-dP-ykx">
@@ -588,7 +588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vip-tz-YQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2139.130434782609" y="826.63043478260875"/>
+            <point key="canvasLocation" x="1143" y="573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C35-Sk-U2C">
@@ -606,12 +606,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdW-Jt-OON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-206" y="668"/>
+            <point key="canvasLocation" x="-641" y="1096"/>
         </scene>
     </scenes>
     <resources>
         <image name="loginscreen" width="400" height="600"/>
-        <image name="oldPaper" width="957" height="1458"/>
+        <image name="pizzaListBackGround" width="4000" height="6000"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KQv-E7-W6P"/>
